@@ -1,0 +1,38 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Mailinator {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.mailinator.com/v4/public/inboxes.jsp?msgid=huzaifa-1654592450-219561426&to=huzaifa");
+		List<WebElement> unreademail = driver.findElements(By.xpath("//*[@id=\"inbox_pane\"]/div[3]/div/div[4]/div/div"));
+
+
+
+		System.out.println("Total No. of Unread Mails: " + unreademail.size());
+
+		// real logic starts here
+
+		for(int i=0;i<unreademail.size();i++){
+
+		System.out.println(unreademail.get(i).getText());
+
+		}
+
+		unreademail.get(0).click();
+
+		Thread.sleep(3000);
+
+		
+	}
+
+}
